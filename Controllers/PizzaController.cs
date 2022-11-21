@@ -17,6 +17,8 @@ namespace la_mia_pizzeria_static.Controllers
         {
             PizzeriaDbContext db = new PizzeriaDbContext();
             Pizza pizza = db.Pizze.Where(p => p.Id == id).FirstOrDefault();
+            if(pizza == null)
+                return View("NotFound","La pizza cercata non è stata trovata");
             return View(pizza);
         }
     }
